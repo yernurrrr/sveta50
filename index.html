@@ -55,18 +55,21 @@
         }
 
         .flower-top-left {
-            top: -60px;
-            left: -60px;
-            animation: floatInTopLeft 2.5s ease-out forwards;
-            animation-delay: 0.2s;
+            position: absolute;
+            top: 0;
+            left: 25%; /* Сдвигаем, чтобы было по центру (50% / 2) */
+            width: 50%; /* Уменьшили в 2 раза (было 100%) */
+            z-index: 1;
+            animation: slideDown 1.5s ease-out;
         }
 
         .flower-bottom-right {
-            bottom: -60px;
-            right: -60px;
-            transform: rotate(180deg);
-            animation: floatInBottomRight 2.5s ease-out forwards;
-            animation-delay: 0.2s;
+            position: absolute;
+            top: 0;
+            left: 25%; /* Сдвигаем, чтобы было по центру (50% / 2) */
+            width: 50%; /* Уменьшили в 2 раза (было 100%) */
+            z-index: 1;
+            animation: slideDown 1.5s ease-out;
         }
 
         @keyframes floatInTopLeft {
