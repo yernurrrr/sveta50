@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Света - 50 Жас</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* === ОСНОВНЫЕ СТИЛИ === */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9f8f4; /* Бежевый фон */
+            font-family: 'Montserrat', sans-serif;
+            color: #5a4a42;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 30px rgba(0,0,0,0.05);
+            position: relative;
+            min-height: 100vh;
+            z-index: 10;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            color: #c5a059; /* Золотой цвет */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #f2efe9;
+        }
+
+        /* === АНИМАЦИЯ ЦВЕТОВ === */
+        .flower-corner {
+            position: fixed;
+            z-index: 20;
+            width: 280px; /* Размер цветов */
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .flower-top-left {
+            top: -60px;
+            left: -60px;
+            animation: floatInTopLeft 2.5s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        .flower-bottom-right {
+            bottom: -60px;
+            right: -60px;
+            transform: rotate(180deg);
+            animation: floatInBottomRight 2.5s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes floatInTopLeft {
+            from { opacity: 0; transform: translate(-80px, -80px) scale(0.8); }
+            to { opacity: 1; transform: translate(0, 0) scale(1); }
+        }
+
+        @keyframes floatInBottomRight {
+            from { opacity: 0; transform: translate(80px, 80px) rotate(180deg) scale(0.8); }
+            to { opacity: 1; transform: translate(0, 0) rotate(180deg) scale(1); }
+        }
+
+        /* На мобильных чуть уменьшаем цветы */
+        @media (max-width: 400px) {
+            .flower-corner { width: 200px; }
+        }
+
+        /* === 1. ОБЛОЖКА === */
+        .hero {
+            padding: 100px 20px 60px;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-color: #fff;
+        }
+
+        .hero-subtitle {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #999;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 10px;
+            color: #c5a059; /* Золото */
+        }
+
+        .hero-date {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            border-top: 1px solid #c5a059;
+            border-bottom: 1px solid #c5a059;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #5a4a42;
+        }
+
+        /* ТАЙМЕР */
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .timer-box { width: 50px; }
+        .timer-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #c5a059;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .timer-label {
+            font-size: 10px;
+            color: #999;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* === 2. ЦИТАТА (Балалары) === */
+        .wishes-box {
+            background-color: #fdfcf9;
+            padding: 40px 30px;
+            margin: 20px;
+            border: 1px solid #eaddcf;
+            border-radius: 10px;
+            position: relative;
+        }
+        .quote-icon {
+            font-size: 40px;
+            color: #eaddcf;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .wishes-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #5a4a42;
+        }
+        .wishes-sign {
+            margin-top: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #c5a059;
+            text-transform: uppercase;
+        }
+
+        /* === 3. КАЛЕНДАРЬ === */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+        }
+        .day-name {
+            font-size: 12px;
+            color: #999;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+        }
+        .day { padding: 5px; }
+        .day.active {
+            background-color: #c5a059;
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+        }
+
+        /* === 4. ПРОГРАММА === */
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            text-align: left;
+            padding-left: 20px;
+        }
+        .time-col {
+            min-width: 70px;
+            font-family: 'Cormorant Garamond';
+            font-size: 1.5rem;
+            color: #c5a059;
+            font-weight: bold;
+        }
+        .event-col {
+            padding-left: 20px;
+            border-left: 2px solid #f0e6d8;
+        }
+        .event-title {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .event-desc {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* === 5. ФОРМА (ОБНОВЛЕННАЯ) === */
+        .rsvp-box { background: #5a4a42; color: #fff; padding: 50px 20px; border-radius: 10px; }
+        .rsvp-box h2 { color: #fff; margin-bottom: 10px; }
+        .rsvp-box p { color: #ccc; margin-bottom: 20px; }
+
+        .rsvp-input {
+            width: 90%; padding: 15px; border: 1px solid #ddd; border-radius: 5px;
+            text-align: center; margin-bottom: 20px; font-family: 'Montserrat'; font-size: 16px;
+        }
+
+        /* Новые стили для двух кнопок */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 15px 10px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 12px;
+            transition: 0.3s;
+            flex: 1; /* Чтобы кнопки были одинаковой ширины */
+        }
+
+        /* Золотая кнопка */
+        .btn-yes {
+            background: #c5a059;
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+        }
+        .btn-yes:hover { background: #b08d4b; }
+
+        /* Прозрачная кнопка */
+        .btn-no {
+            background: transparent;
+            border: 1px solid #c5a059;
+            color: #c5a059;
+        }
+        .btn-no:hover { background: rgba(197, 160, 89, 0.1); }
+        /* МУЗЫКА */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 999;
+            border: 1px solid #c5a059;
+            color: #c5a059;
+        }
+
+        /* КАРТА */
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 10px;
+            filter: grayscale(20%) contrast(0.9);
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="audio" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-btn" onclick="toggleAudio()">🎵</div>
+
+    <img src="https://cdn.pixabay.com/photo/2017/02/09/10/44/flower-2051634_960_720.png" class="flower-corner flower-top-left" alt="flowers">
+    <img src="https://cdn.pixabay.com/photo/2017/02/09/10/44/flower-2051634_960_720.png" class="flower-corner flower-bottom-right" alt="flowers">
+
+    <div class="container">
+
+        <div class="section hero">
+            <span class="hero-subtitle">МЕРЕЙТОЙҒА ШАҚЫРУ</span>
+            <h1>Света</h1>
+            <div class="hero-date">12 ЖЕЛТОҚСАН 2025</div>
+            <p style="margin-top: 30px; font-size: 14px; color: #888;">
+                Анамыздың 50 жасқа толған қуанышына ортақ болыңыздар!
+            </p>
+
+            <div class="timer">
+                <div class="timer-box"><div class="timer-val" id="d">00</div><div class="timer-label">Күн</div></div>
+                <div class="timer-box"><div class="timer-val" id="h">00</div><div class="timer-label">Сағат</div></div>
+                <div class="timer-box"><div class="timer-val" id="m">00</div><div class="timer-label">Мин</div></div>
+                <div class="timer-box"><div class="timer-val" id="s">00</div><div class="timer-label">Сек</div></div>
+            </div>
+        </div>
+
+        <div class="wishes-box">
+            <div class="quote-icon">❝</div>
+            <p class="wishes-text">
+                Анашым, сіз біздің өміріміздің жарығысыз.
+                Елу жыл — бұл тек басы ғана. Әр күніңіз қуанышқа,
+                денсаулыққа және бақытқа толсын!
+            </p>
+            <div class="wishes-sign">— Балалары</div>
+        </div>
+
+        <div class="section">
+            <h2>Күнтізбе</h2>
+            <p style="font-size: 14px; margin-bottom: 20px;">Бұл күнді бізбен бірге өткізіңіз</p>
+
+            <div style="max-width: 300px; margin: 0 auto;">
+                <h3 style="color: #5a4a42; margin-bottom: 15px;">Желтоқсан</h3>
+                <div class="calendar-grid">
+                    <div class="day-name">Дс</div><div class="day-name">Сс</div><div class="day-name">Ср</div>
+                    <div class="day-name">Бс</div><div class="day-name">Жм</div><div class="day-name">Сн</div><div class="day-name">Жс</div>
+
+                    <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div>
+                    <div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div>
+                    <div class="day">9</div><div class="day">10</div><div class="day">11</div>
+
+                    <div class="day active">12</div>
+
+                    <div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div>
+                    <div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div>
+                    <div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day">24</div>
+                    <div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div>
+                    <div class="day">29</div><div class="day">30</div><div class="day">31</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Бағдарлама</h2>
+            <br>
+            <div style="max-width: 350px; margin: 0 auto;">
+                <div class="timeline-item">
+                    <div class="time-col">18:00</div>
+                    <div class="event-col">
+                        <div class="event-title">Қонақтарды қарсы алу</div>
+                        <div class="event-desc">Фотосессия және welcome-drink</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">19:00</div>
+                    <div class="event-col">
+                        <div class="event-title">Мерекелік ашылу</div>
+                        <div class="event-desc">Тойдың басталуы, ақ тілектер</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">20:00</div>
+                    <div class="event-col">
+                        <div class="event-title">Ас беру</div>
+                        <div class="event-desc">Арнайы дайындалған мәзір</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-col">23:00</div>
+                    <div class="event-col">
+                        <div class="event-title">Торт кесу</div>
+                        <div class="event-desc">Тәтті сәттер</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" style="padding-bottom: 40px;">
+            <h2>Мекен-жайы</h2>
+            <p style="font-weight: bold; margin-top: 10px;">Ресторан "Алатау"</p>
+            <p style="color: #888;">Кызылорда қаласы, Назарбаев даңғылы, 38</p>
+            <br>
+
+            <iframe
+                src="https://maps.google.com/maps?q=Restaurant+Alatau+Kyzylorda&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen loading="lazy">
+            </iframe>
+
+            <div style="margin-top: 15px;">
+                <a href="https://2gis.kz/kyzylorda/search/%D0%90%D0%BB%D0%B0%D1%82%D0%B0%D1%83%20%D0%BA%D1%8B%D0%B7%D1%8B%D0%BB%D0%BE%D1%80%D0%B4%D0%B0/firm/70000001062756656/65.525304%2C44.797789?m=65.519907%2C44.811283%2F14.22" target="_blank" style="color: #c5a059; text-decoration: underline;">2GIS картасынан қарау</a>
+            </div>
+        </div>
+
+        <div class="section rsvp-box">
+            <h2>Келесіз бе?</h2>
+            <p>Тойға қатысатыныңызды растауыңызды сұраймыз:</p>
+
+            <input type="text" id="name" class="rsvp-input" placeholder="Есіміңізді жазыңыз...">
+
+            <div class="btn-group">
+                <button class="btn btn-yes" onclick="send('Келемін')">✅ Келемін</button>
+                <button class="btn btn-no" onclick="send('Келе алмаймын')">❌ Келе алмаймын</button>
+            </div>
+
+            <div id="msg" style="display:none; margin-top:15px; color: #c5a059; font-weight: bold;">Рахмет! Жауабыңыз қабылданды.</div>
+        </div>
+
+    </div>
+
+    <script>
+        // Таймер
+        const eventDate = new Date("Dec 12, 2025 18:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = eventDate - now;
+            if(diff > 0) {
+                document.getElementById("d").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById("h").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("m").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("s").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+
+        // Музыка
+        let audio = document.getElementById("audio");
+        let btn = document.querySelector(".music-btn");
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                btn.innerHTML = "🎵";
+            } else {
+                audio.play();
+                btn.innerHTML = "⏸";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Телеграм
+        // Обновленная функция отправки
+        function send(answer) {
+            let name = document.getElementById("name").value;
+            if(name === "") { alert("Есіміңізді жазыңыз!"); return; }
+
+            // Показываем статус "Жіберілуде..." на кнопках
+            document.querySelectorAll('.btn').forEach(b => b.innerHTML = "Жіберілуде...");
+
+            // === ВСТАВЬТЕ СЮДА ВАШИ ДАННЫЕ ===
+            let token = "7953734620:AAEtNv2XE2gTWSTKMECWcC9gBgjilSj7S0E";
+            let chat = "7346456383";
+            // ================================
+
+            // Формируем сообщение с именем и ответом
+            let text = `🎉 Юбилей 50 жас! %0A👤 Қонақ: ${name} %0A📝 Жауабы: ${answer}`;
+
+            fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat}&text=${text}`)
+            .then(r => {
+                if(r.ok) {
+                    document.getElementById("msg").style.display = "block";
+                    document.querySelector('.btn-group').style.display = "none"; // Скрываем кнопки
+                    document.getElementById("name").style.display = "none"; // Скрываем поле
+                }
+                else {
+                    alert("Қате кетті! Интернетті тексеріңіз.");
+                    document.querySelectorAll('.btn').forEach(b => b.innerHTML = "Қайта көріңіз");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
