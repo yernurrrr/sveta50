@@ -6,7 +6,7 @@
     <title>Света - 50 Жас</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         /* === ОСНОВНЫЕ СТИЛИ === */
@@ -302,10 +302,7 @@
 </head>
 <body>
 
-    <audio id="audio" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-    <div class="music-btn" onclick="toggleAudio()">🎵</div>
+
 
     <img src="flowers.png" class="flower-corner flower-top-left" alt="flowers">
     <img src="flowers.png" class="flower-corner flower-bottom-right" alt="flowers">
@@ -363,41 +360,6 @@
             </div>
         </div>
 
-        <div class="section">
-            <h2>Бағдарлама</h2>
-            <br>
-            <div style="max-width: 350px; margin: 0 auto;">
-                <div class="timeline-item">
-                    <div class="time-col">18:00</div>
-                    <div class="event-col">
-                        <div class="event-title">Қонақтарды қарсы алу</div>
-                        <div class="event-desc">Фотосессия және welcome-drink</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col">19:00</div>
-                    <div class="event-col">
-                        <div class="event-title">Мерекелік ашылу</div>
-                        <div class="event-desc">Тойдың басталуы, ақ тілектер</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col">20:00</div>
-                    <div class="event-col">
-                        <div class="event-title">Ас беру</div>
-                        <div class="event-desc">Арнайы дайындалған мәзір</div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="time-col">23:00</div>
-                    <div class="event-col">
-                        <div class="event-title">Торт кесу</div>
-                        <div class="event-desc">Тәтті сәттер</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="section" style="padding-bottom: 40px;">
             <h2>Мекен-жайы</h2>
             <p style="font-weight: bold; margin-top: 10px;">Ресторан "Алатау"</p>
@@ -414,19 +376,6 @@
             </div>
         </div>
 
-        <div class="section rsvp-box">
-            <h2>Келесіз бе?</h2>
-            <p>Тойға қатысатыныңызды растауыңызды сұраймыз:</p>
-
-            <input type="text" id="name" class="rsvp-input" placeholder="Есіміңізді жазыңыз...">
-
-            <div class="btn-group">
-                <button class="btn btn-yes" onclick="send('Келемін')">✅ Келемін</button>
-                <button class="btn btn-no" onclick="send('Келе алмаймын')">❌ Келе алмаймын</button>
-            </div>
-
-            <div id="msg" style="display:none; margin-top:15px; color: #c5a059; font-weight: bold;">Рахмет! Жауабыңыз қабылданды.</div>
-        </div>
 
     </div>
 
