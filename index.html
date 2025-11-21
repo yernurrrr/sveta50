@@ -49,27 +49,24 @@
         .flower-corner {
             position: fixed;
             z-index: 20;
-            width: 280px; /* Размер цветов */
+            width: 140px; /* Размер цветов */
             pointer-events: none;
             opacity: 0;
         }
 
         .flower-top-left {
-            position: absolute;
-            top: 0;
-            left: 25%; /* Сдвигаем, чтобы было по центру (50% / 2) */
-            width: 50%; /* Уменьшили в 2 раза (было 100%) */
-            z-index: 1;
-            animation: slideDown 1.5s ease-out;
+            top: -60px;
+            left: -60px;
+            animation: floatInTopLeft 2.5s ease-out forwards;
+            animation-delay: 0.2s;
         }
 
         .flower-bottom-right {
-            position: absolute;
-            top: 0;
-            left: 25%; /* Сдвигаем, чтобы было по центру (50% / 2) */
-            width: 50%; /* Уменьшили в 2 раза (было 100%) */
-            z-index: 1;
-            animation: slideDown 1.5s ease-out;
+            bottom: -60px;
+            right: -60px;
+            transform: rotate(180deg);
+            animation: floatInBottomRight 2.5s ease-out forwards;
+            animation-delay: 0.2s;
         }
 
         @keyframes floatInTopLeft {
